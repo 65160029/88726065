@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // ประกาศตัวแปร โดยดึงจาก medthod document.getElementById
 const todoList = document.getElementById("todo-list");
 const todoInput = document.getElementById("todo-input");
 const addButton = document.getElementById("add-button");
@@ -39,9 +40,12 @@ listItem.textContent = todoItem.text;
 if (todoItem.completed) {
 listItem.classList.add("completed");
 }
+
+// สร้างปุ่มลบในรายการที่เพิ่ม
 const deleteButton = document.createElement("button");
 deleteButton.textContent = "ลบ";
 deleteButton.addEventListener("click", () => deleteTodo(i));
+// สร้างปุ่มเสร็จในรายการที่เพิ่ม แล้วแสดงยกเลิกเมื่อกด
 const completeButton = document.createElement("button");
 completeButton.textContent = todoItem.completed ? "ยกเลิก" : "เสร็จ";
 completeButton.addEventListener("click", () => toggleComplete(i));
@@ -54,7 +58,7 @@ todoList.appendChild(listItem);
 addButton.addEventListener("click", addTodo);
 // การกด Enter ใน input
 todoInput.addEventListener("keypress", function (event) {
-if (event.key === "Enter") {
+    if (event.key === "Enter") {
 addTodo();
 }
 });
